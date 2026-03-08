@@ -1,0 +1,101 @@
+/* Military Radar Background */
+
+body {
+    background: radial-gradient(circle at center, #0b1a13, #020805);
+    color: #e6f1ff;
+    font-family: "Orbitron", sans-serif;
+    overflow-x: hidden;
+}
+
+/* Radar grid animation */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image:
+        linear-gradient(rgba(0,255,120,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,120,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: radarMove 20s linear infinite;
+    z-index: -2;
+}
+
+/* Moving drone icons */
+
+body::after {
+    content: "🛸 🛸 🛸 🛸 🛸";
+    position: fixed;
+    top: 10%;
+    left: -20%;
+    font-size: 40px;
+    opacity: 0.15;
+    animation: droneFly 35s linear infinite;
+    z-index: -1;
+}
+
+@keyframes radarMove {
+    from {
+        transform: translate(0,0);
+    }
+    to {
+        transform: translate(-200px,-200px);
+    }
+}
+
+@keyframes droneFly {
+    0% {
+        left: -20%;
+        top: 10%;
+    }
+    25% {
+        left: 30%;
+        top: 30%;
+    }
+    50% {
+        left: 60%;
+        top: 15%;
+    }
+    75% {
+        left: 90%;
+        top: 40%;
+    }
+    100% {
+        left: 120%;
+        top: 10%;
+    }
+}
+
+/* Title glow */
+
+h1 {
+    color: #00ff9c;
+    font-size: 44px;
+    text-shadow: 0 0 20px rgba(0,255,140,0.9);
+}
+
+/* Glass panels */
+
+[data-testid="stDataFrame"],
+[data-testid="stFileUploader"],
+[data-testid="stPlotlyChart"] {
+    background: rgba(10,20,15,0.6);
+    border-radius: 14px;
+    border: 1px solid rgba(0,255,120,0.3);
+    backdrop-filter: blur(8px);
+}
+
+/* Upload box */
+
+[data-testid="stFileUploader"] {
+    border: 2px dashed #00ff9c;
+}
+
+/* Table hover */
+
+tbody tr:hover {
+    background: rgba(0,255,120,0.08);
+}
